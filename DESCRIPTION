@@ -1,0 +1,17 @@
+Package: rumpel
+Title: Manipulate objects by their names
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "David",
+           family = "Hugh-Jones",
+           role = c("aut", "cre"),
+           email = "davidhughjones@gmail.com"
+           )
+Description: Contains convenience functions for naming. Select subsets by 
+  name using matches or regular expressions. Rename objects with regular
+  expressions or paste.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
