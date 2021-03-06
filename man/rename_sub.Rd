@@ -10,7 +10,7 @@ rename_sub(x, pattern, replacement, ...)
 rename_gsub(x, pattern, replacement, ...)
 }
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{pattern}{A regular expression string (see \link{regex}).}
 

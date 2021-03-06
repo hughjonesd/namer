@@ -13,7 +13,7 @@ rename_tolower(x)
 rename_toupper(x)
 }
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{old, new}{Character strings passed to \code{\link[=chartr]{chartr()}}.}
 }

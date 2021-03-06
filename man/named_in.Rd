@@ -7,7 +7,7 @@
 named_in(x, table)
 }
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{table}{A vector.}
 }

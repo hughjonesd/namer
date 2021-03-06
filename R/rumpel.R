@@ -6,7 +6,7 @@ NULL
 
 #' Common documentation
 #'
-#' @param x A named vector.
+#' @param x An object with names.
 #' @param pattern A regular expression string (see [regex]).
 #' @name doc-common
 NULL

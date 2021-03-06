@@ -7,7 +7,7 @@
 named(x, y)
 }
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{y}{A character scalar.}
 }

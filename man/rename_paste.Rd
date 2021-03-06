@@ -7,7 +7,7 @@
 rename_paste(x, ..., sep = "")
 }
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{...}{Character vectors to paste after the names.}
 

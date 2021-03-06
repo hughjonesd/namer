@@ -4,7 +4,7 @@
 \alias{doc-common}
 \title{Common documentation}
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{pattern}{A regular expression string (see \link{regex}).}
 }

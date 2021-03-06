@@ -7,7 +7,7 @@
 named_like(x, pattern)
 }
 \arguments{
-\item{x}{A named vector.}
+\item{x}{An object with names.}
 
 \item{pattern}{A regular expression string (see \link{regex}).}
 }
