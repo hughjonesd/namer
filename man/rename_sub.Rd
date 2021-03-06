@@ -3,7 +3,7 @@
 \name{rename_sub}
 \alias{rename_sub}
 \alias{rename_gsub}
-\title{Rename with a regular expression}
+\title{Rename using a regular expression}
 \usage{
 rename_sub(x, pattern, replacement, ...)
 
@@ -23,7 +23,7 @@ rename_gsub(x, pattern, replacement, ...)
 }
 }
 \description{
-Rename with a regular expression
+Rename using a regular expression
 }
 \examples{
 

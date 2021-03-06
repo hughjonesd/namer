@@ -12,7 +12,7 @@ named_in(x, table)
 \item{table}{A vector.}
 }
 \value{
-\preformatted{x[names(x) \%in\% y]
+\preformatted{x[names(x) \%in\% table]
 }
 }
 \description{

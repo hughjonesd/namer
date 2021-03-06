@@ -12,7 +12,7 @@ named_like(x, pattern)
 \item{pattern}{A regular expression string (see \link{regex}).}
 }
 \value{
-\preformatted{x[grepl(y, names(x))]
+\preformatted{x[grepl(pattern, names(x))]
 }
 }
 \description{

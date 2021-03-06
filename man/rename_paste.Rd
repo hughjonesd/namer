@@ -2,7 +2,7 @@
 % Please edit documentation in R/rumpel.R
 \name{rename_paste}
 \alias{rename_paste}
-\title{Rename with paste}
+\title{Rename using \code{paste()}}
 \usage{
 rename_paste(x, ..., sep = "")
 }
@@ -18,7 +18,7 @@ rename_paste(x, ..., sep = "")
 }
 }
 \description{
-Rename with paste
+Rename using \code{paste()}
 }
 \examples{
 

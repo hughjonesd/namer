@@ -1,6 +1,7 @@
 
 
 #' @importFrom stats setNames
+#' @import assertthat
 NULL
 
 
@@ -18,7 +19,7 @@ NULL
 #'
 #' @return
 #' ```
-#' x[grepl(y, names(x))]
+#' x[grepl(pattern, names(x))]
 #' ```
 #' @export
 #'
@@ -28,6 +29,7 @@ NULL
 #' named_like(vec, "^t")
 #'
 named_like <- function (x, pattern) {
+  assert_that(is.scalar(pattern))
   x[grepl(pattern, names(x))]
 }
 
@@ -49,6 +51,7 @@ named_like <- function (x, pattern) {
 #' named(vec, "one")
 #'
 named <- function (x, y) {
+  assert_that(is.scalar(y))
   x[names(x) == y]
 }
 
@@ -60,7 +63,7 @@ named <- function (x, y) {
 #'
 #' @return
 #' ```
-#' x[names(x) %in% y]
+#' x[names(x) %in% table]
 #' ```
 #' @export
 #'
@@ -70,11 +73,12 @@ named <- function (x, y) {
 #' named_in(vec, c("one", "four"))
 #'
 named_in <- function (x, table) {
+  assert_that(is.vector(table))
   x[names(x) %in% table]
 }
 
 
-#' Rename with a regular expression
+#' Rename using a regular expression
 #'
 #' @inherit doc-common
 #' @param replacement A replacement string. See [sub()].
@@ -93,6 +97,7 @@ named_in <- function (x, table) {
 #' rename_gsub(vec, "[aeiou]", "e")
 #'
 rename_sub <- function (x, pattern, replacement, ...) {
+  assert_that(is.scalar(pattern), is.scalar(replacement))
   setNames(x, sub(pattern, replacement, names(x), ...))
 }
 
@@ -100,6 +105,7 @@ rename_sub <- function (x, pattern, replacement, ...) {
 #' @rdname rename_sub
 #' @export
 rename_gsub <- function (x, pattern, replacement, ...) {
+  assert_that(is.scalar(pattern), is.scalar(replacement))
   setNames(x, gsub(pattern, replacement, names(x), ...))
 }
 
@@ -123,6 +129,7 @@ rename_gsub <- function (x, pattern, replacement, ...) {
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
 #' rename_toupper(vec)
 rename_chartr <- function (x, old, new) {
+  assert_that(is.string(old), is.string(new))
   setNames(x, chartr(old, new, names(x)))
 }
 
@@ -141,7 +148,7 @@ rename_toupper <- function (x) {
 }
 
 
-#' Rename with paste
+#' Rename using `paste()`
 #'
 #' @inherit doc-common
 #' @param ... Character vectors to paste after the names.
@@ -159,7 +166,32 @@ rename_toupper <- function (x) {
 #' rename_paste(vec, "X")
 #'
 rename_paste <- function (x, ..., sep = "") {
+  assert_that(is.string(sep))
   setNames(x, paste(names(x), ..., sep = sep))
 }
+
+
+#' Rename using a function
+#'
+#' @inherit doc-common
+#' @param f A function or one-sided formula, as in [rlang::as_function()].
+#' @param where A set of indices for the names.
+#'
+#' @return
+#' `x` after `names(x)[where] <- f(names(x)[where])`.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' vec <- c(one = 1, two = 2, three = 3, four = 4)
+#' rename_with(vec, ~ substr(.x, 1, 2), where = 2:3)
+#'
+rename_with <- function (x, f, where = TRUE) {
+  f <- rlang::as_function(f)
+  names(x)[where] <- f(names(x)[where])
+  x
+}
+
 
 
