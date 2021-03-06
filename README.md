@@ -4,6 +4,8 @@
 # rumpel
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/hughjonesd/rumpel/workflows/R-CMD-check/badge.svg)](https://github.com/hughjonesd/rumpel/actions)
 <!-- badges: end -->
 
 Rumpel is a tiny r package containing convenience functions for
@@ -40,14 +42,8 @@ vec %>% rename_toupper()
 
 ## Installation
 
-You can install the released version of rumpel from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("rumpel")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
