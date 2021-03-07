@@ -2,7 +2,7 @@
 % Please edit documentation in R/rumpel.R
 \name{named}
 \alias{named}
-\title{Select objects by name}
+\title{Subset objects by name}
 \usage{
 named(x, y)
 }
@@ -16,7 +16,7 @@ named(x, y)
 }
 }
 \description{
-Select objects by name
+Subset objects by name
 }
 \examples{
 

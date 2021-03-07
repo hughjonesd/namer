@@ -14,8 +14,6 @@ Contains convenience functions for naming. Select subsets by
 \if{html}{\out{
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 }}
-}
-\section{rumpel}{
 \if{html}{\out{
 <!-- badges: start -->
 }}
@@ -73,7 +71,6 @@ devtools::install_github("hughjonesd/rumpel")
 }\if{html}{\out{</div>}}
 }
 }
-
 \author{
 \strong{Maintainer}: David Hugh-Jones \email{davidhughjones@gmail.com}
 

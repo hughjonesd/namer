@@ -1,8 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# rumpel
-
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/hughjonesd/rumpel/workflows/R-CMD-check/badge.svg)](https://github.com/hughjonesd/rumpel/actions)

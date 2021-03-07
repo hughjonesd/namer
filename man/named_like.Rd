@@ -2,7 +2,7 @@
 % Please edit documentation in R/rumpel.R
 \name{named_like}
 \alias{named_like}
-\title{Select objects by name using a regular expression}
+\title{Subset objects by name using a regular expression}
 \usage{
 named_like(x, pattern)
 }
@@ -16,7 +16,7 @@ named_like(x, pattern)
 }
 }
 \description{
-Select objects by name using a regular expression
+Subset objects by name using a regular expression
 }
 \examples{
 

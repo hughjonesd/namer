@@ -2,7 +2,7 @@
 % Please edit documentation in R/rumpel.R
 \name{named_in}
 \alias{named_in}
-\title{Select objects by name using a vector of matches}
+\title{Subset objects by name using a vector of matches}
 \usage{
 named_in(x, table)
 }
@@ -16,7 +16,7 @@ named_in(x, table)
 }
 }
 \description{
-Select objects by name using a vector of matches
+Subset objects by name using a vector of matches
 }
 \examples{
 

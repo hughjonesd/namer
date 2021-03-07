@@ -12,7 +12,7 @@ NULL
 NULL
 
 
-#' Select objects by name using a regular expression
+#' Subset objects by name using a regular expression
 #'
 #' @inherit doc-common
 #'
@@ -33,7 +33,7 @@ named_like <- function (x, pattern) {
 }
 
 
-#' Select objects by name
+#' Subset objects by name
 #'
 #' @inherit doc-common
 #' @param y A character scalar.
@@ -55,7 +55,7 @@ named <- function (x, y) {
 }
 
 
-#' Select objects by name using a vector of matches
+#' Subset objects by name using a vector of matches
 #'
 #' @inherit doc-common
 #' @param table A vector.
