@@ -1,30 +1,8 @@
 
-#' Functions to manipulate objects by name
+#' Manipulate objects by name
 #'
-#' In the fairy tale, Rumpelstiltskin could be controlled once the heroine
-#' learned his name. The rumpel package contains convenience functions
-#' to control R objects by name.
-#'
+#' @includeRmd README.Rmd
 #' @keywords internal
-#'
-#' @details
-#' Functions that start with `named` return a subset of the original
-#' object:
-#'
-#' ```
-#' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' vec %>% named("one")
-#' vec %>% named_like("^t")
-#' ```
-#'
-#' Functions that start with `rename` return the object with its
-#' names changed:
-#'
-#' ```
-#' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' vec %>% rename_gsub("[aeiou]", "e")
-#' vec %>% rename_toupper()
-#' ```
 #'
 "_PACKAGE"
 

@@ -4,25 +4,76 @@
 \name{rumpel-package}
 \alias{rumpel}
 \alias{rumpel-package}
-\title{Functions to manipulate objects by name}
+\title{Manipulate objects by name}
 \description{
-In the fairy tale, Rumpelstiltskin could be controlled once the heroine
-learned his name. The rumpel package contains convenience functions
-to control R objects by name.
+Contains convenience functions for naming. Select subsets by 
+  name using matches or regular expressions. Rename objects with regular
+  expressions or paste.
 }
 \details{
+\if{html}{\out{
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+}}
+}
+\section{rumpel}{
+\if{html}{\out{
+<!-- badges: start -->
+}}
+
+
+\href{https://github.com/hughjonesd/rumpel/actions}{\figure{https://github.com/hughjonesd/rumpel/workflows/R-CMD-check/badge.svg}}\if{html}{\out{
+<!-- badges: end -->
+}}
+
+
+In the fairy tale, Rumpelstiltskin could be controlled once the heroine
+learned his name.
+
+Rumpel is a tiny r package containing convenience functions for
+manipulating objects by their names.
+
 Functions that start with \code{named} return a subset of the original
-object:\preformatted{vec <- c(one = 1, two = 2, three = 3, four = 4)
-vec \%>\% named("one")
-vec \%>\% named_like("^t")
+object:\if{html}{\out{<div class="r">}}\preformatted{library(rumpel)
+library(magrittr)
+
+vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
+vec \%>\% named("One")
+#> One 
+#>   1
+vec \%>\% named_in(c("Two", "Three"))
+#>   Two Three 
+#>     2     3
+vec \%>\% named_like("[A-Z].*e$")
+#>   One Three 
+#>     1     3
+}\if{html}{\out{</div>}}
+
+Functions that start with \code{rename} return the object with its names
+changed:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_gsub("[aeiou]", "e")
+#>   One   Twe Three  Feer 
+#>     1     2     3     4
+vec \%>\% rename_toupper()
+#>   ONE   TWO THREE  FOUR 
+#>     1     2     3     4
+vec \%>\% rename_tolower()
+#>   one   two three  four 
+#>     1     2     3     4
+vec \%>\% rename_paste(".", 1:4)
+#>   One.1   Two.2 Three.3  Four.4 
+#>       1       2       3       4
+vec \%>\% rename_fn(~paste0("Number", .x))
+#>   NumberOne   NumberTwo NumberThree  NumberFour 
+#>           1           2           3           4
+}\if{html}{\out{</div>}}
+\subsection{Installation}{
+
+You can install the development version from
+\href{https://github.com/}{GitHub} with:\if{html}{\out{<div class="r">}}\preformatted{# install.packages("devtools")
+devtools::install_github("hughjonesd/rumpel")
+}\if{html}{\out{</div>}}
+}
 }
 
-Functions that start with \code{rename} return the object with its
-names changed:\preformatted{vec <- c(one = 1, two = 2, three = 3, four = 4)
-vec \%>\% rename_gsub("[aeiou]", "e")
-vec \%>\% rename_toupper()
-}
-}
 \author{
 \strong{Maintainer}: David Hugh-Jones \email{davidhughjones@gmail.com}
 
