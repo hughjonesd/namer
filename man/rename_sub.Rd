@@ -10,6 +10,8 @@ rename_sub(x, pattern, replacement, ...)
 rename_gsub(x, pattern, replacement, ...)
 }
 \arguments{
+\item{x}{An object with names.}
+
 \item{pattern, replacement, ...}{Passed into \code{\link[=sub]{sub()}} or \code{\link[=gsub]{gsub()}}.}
 }
 \value{

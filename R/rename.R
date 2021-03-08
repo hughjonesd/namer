@@ -1,7 +1,8 @@
 
-#' Doc for rename
+
 #' @name doc-common-rename
-#' @inherit doc-common
+#' @param x An object with names.
+#' @param pattern A regular expression string (see [regex]).
 #' @param f A function or one-sided formula, interpreted by [rlang::as_function()].
 #' @param ... Passed into `f`.
 #' @return The renamed object.
@@ -48,7 +49,7 @@ rename_in <- function (x, table, f, ...) {
 #' Rename names that match a regular expression
 #'
 #' @inherit doc-common-rename
-#' @param ignore.case,perl,fixed,use.bytes Passed into [grepl()].
+#' @param ignore.case,perl,fixed,useBytes Passed into [grepl()].
 #'
 #' @export
 #'

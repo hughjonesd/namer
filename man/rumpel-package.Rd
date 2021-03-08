@@ -34,14 +34,14 @@ library(magrittr)
 my_object <- c(One = 1, Two = 2, Three = 3, Four = 4)
 
 # Base R:
-my_object[names(my_object) \%in\% c("One", "Two")]
-#> One Two 
-#>   1   2
+my_object[startsWith(names(my_object), "T")]
+#>   Two Three 
+#>     2     3
 
 # Nicer:
-my_object \%>\% named_in(c("One", "Two"))
-#> One Two 
-#>   1   2
+my_object \%>\% named_starting("T")
+#>   Two Three 
+#>     2     3
 
 
 # Base R:
@@ -56,9 +56,6 @@ my_object \%>\% rename_in(c("Two", "Three"), tolower)
 
 Functions that start with \code{named} return a subset of the original
 object:\if{html}{\out{<div class="r">}}\preformatted{vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
-vec \%>\% named_in(c("Two", "Three"))
-#>   Two Three 
-#>     2     3
 vec \%>\% named_starting("T")
 #>   Two Three 
 #>     2     3

@@ -7,6 +7,8 @@
 rename_starting(x, prefix, f, ...)
 }
 \arguments{
+\item{x}{An object with names.}
+
 \item{prefix}{A string.}
 
 \item{f}{A function or one-sided formula, interpreted by \code{\link[rlang:as_function]{rlang::as_function()}}.}

@@ -7,6 +7,8 @@
 rename_in(x, table, f, ...)
 }
 \arguments{
+\item{x}{An object with names.}
+
 \item{table}{A character vector passed to \code{\%in\%}.}
 
 \item{f}{A function or one-sided formula, interpreted by \code{\link[rlang:as_function]{rlang::as_function()}}.}

@@ -33,28 +33,6 @@ named_like <- function (x, pattern) {
 }
 
 
-#' Subset objects by name using a vector of matches
-#'
-#' @inherit doc-common
-#' @param table A vector.
-#'
-#' @return
-#' ```
-#' x[names(x) %in% table]
-#' ```
-#' @export
-#'
-#' @examples
-#'
-#' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' named_in(vec, c("one", "four"))
-#'
-named_in <- function (x, table) {
-  stopifnot(is.vector(table))
-  x[names(x) %in% table]
-}
-
-
 #' Subset objects by name using an initial substring
 #'
 #' @inherit doc-common

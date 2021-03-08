@@ -7,6 +7,8 @@
 rename_subset(x, matches, f, ...)
 }
 \arguments{
+\item{x}{An object with names.}
+
 \item{matches}{A logical or numeric index.}
 
 \item{f}{A function or one-sided formula, interpreted by \code{\link[rlang:as_function]{rlang::as_function()}}.}

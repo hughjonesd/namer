@@ -16,11 +16,15 @@ rename_like(
 )
 }
 \arguments{
+\item{x}{An object with names.}
+
+\item{pattern}{A regular expression string (see \link{regex}).}
+
 \item{f}{A function or one-sided formula, interpreted by \code{\link[rlang:as_function]{rlang::as_function()}}.}
 
 \item{...}{Passed into \code{f}.}
 
-\item{ignore.case, perl, fixed, use.bytes}{Passed into \code{\link[=grepl]{grepl()}}.}
+\item{ignore.case, perl, fixed, useBytes}{Passed into \code{\link[=grepl]{grepl()}}.}
 }
 \value{
 The renamed object.
