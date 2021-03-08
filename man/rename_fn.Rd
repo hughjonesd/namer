@@ -4,7 +4,7 @@
 \alias{rename_fn}
 \title{Rename using a function}
 \usage{
-rename_fn(x, f, where = TRUE)
+rename_fn(x, f, where = TRUE, ...)
 }
 \arguments{
 \item{x}{An object with names.}
@@ -12,6 +12,8 @@ rename_fn(x, f, where = TRUE)
 \item{f}{A function or one-sided formula, as in \code{\link[rlang:as_function]{rlang::as_function()}}.}
 
 \item{where}{A set of indices for the names.}
+
+\item{...}{Passed in to \code{f}.}
 }
 \value{
 \code{x} after \code{names(x)[where] <- f(names(x)[where])}.

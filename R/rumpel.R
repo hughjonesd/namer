@@ -175,6 +175,7 @@ rename_paste <- function (x, ..., sep = "") {
 #' @inherit doc-common
 #' @param f A function or one-sided formula, as in [rlang::as_function()].
 #' @param where A set of indices for the names.
+#' @param ... Passed in to `f`.
 #'
 #' @return
 #' `x` after `names(x)[where] <- f(names(x)[where])`.
@@ -186,9 +187,9 @@ rename_paste <- function (x, ..., sep = "") {
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
 #' rename_fn(vec, ~ substr(.x, 1, 2), where = 2:3)
 #'
-rename_fn <- function (x, f, where = TRUE) {
+rename_fn <- function (x, f, where = TRUE, ...) {
   f <- rlang::as_function(f)
-  names(x)[where] <- f(names(x)[where])
+  names(x)[where] <- f(names(x)[where], ...)
   x
 }
 

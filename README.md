@@ -9,15 +9,38 @@ In the fairy tale, Rumpelstiltskin could be controlled once the heroine
 learned his name.
 
 Rumpel is a tiny r package containing convenience functions for
-manipulating objects by their names.
+manipulating objects by their names. Using these functions makes your
+code easier to read, and reduces duplication:
+
+``` r
+library(rumpel)
+library(magrittr)
+my_object <- c(One = 1, Two = 2, Three = 3, Four = 4)
+
+# Base R:
+my_object[names(my_object) %in% c("One", "Two")]
+#> One Two 
+#>   1   2
+
+# Nicer:
+my_object %>% named_in(c("One", "Two"))
+#> One Two 
+#>   1   2
+
+
+# Base R:
+names(my_object) <- toupper(names(my_object))
+
+# Nicer:
+my_object %>% rename_toupper()
+#>   ONE   TWO THREE  FOUR 
+#>     1     2     3     4
+```
 
 Functions that start with `named` return a subset of the original
 object:
 
 ``` r
-library(rumpel)
-library(magrittr)
-
 vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
 vec %>% named("One")
 #> One 
