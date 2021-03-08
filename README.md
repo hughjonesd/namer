@@ -43,9 +43,6 @@ object:
 
 ``` r
 vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
-vec %>% named("One")
-#> One 
-#>   1
 vec %>% named_in(c("Two", "Three"))
 #>   Two Three 
 #>     2     3
@@ -64,11 +61,9 @@ changed:
 vec %>% rename_starting("T", tolower)
 #>   One   two three  Four 
 #>     1     2     3     4
-
 vec %>% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
 #> One.1 Two.2 Three  Four 
 #>     1     2     3     4
-
 vec %>% rename_gsub("[aeiou]", "e")
 #>   One   Twe Three  Feer 
 #>     1     2     3     4

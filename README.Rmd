@@ -53,7 +53,6 @@ object:
 ```{r}
 
 vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
-vec %>% named("One")
 vec %>% named_in(c("Two", "Three"))
 vec %>% named_starting("T")
 vec %>% named_like("[A-Z].*e$")
@@ -64,9 +63,7 @@ names changed:
 
 ```{r}
 vec %>% rename_starting("T", tolower)
-
 vec %>% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
-
 vec %>% rename_gsub("[aeiou]", "e")
 ```
 

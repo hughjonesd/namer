@@ -33,28 +33,6 @@ named_like <- function (x, pattern) {
 }
 
 
-#' Subset objects by name
-#'
-#' @inherit doc-common
-#' @param y A character scalar.
-#'
-#' @return
-#' ```
-#' x[names(x) == y]
-#' ```
-#' @export
-#'
-#' @examples
-#'
-#' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' named(vec, "one")
-#'
-named <- function (x, y) {
-  stopifnot(length(y) == 1)
-  x[names(x) == y]
-}
-
-
 #' Subset objects by name using a vector of matches
 #'
 #' @inherit doc-common

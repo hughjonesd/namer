@@ -25,5 +25,5 @@ These functions always apply to all names.
 
 vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
 rename_gsub(vec, "[aeiou]", "e")
-rename_sub(vec, "[aeiou]", "\\\\1\\\\1")
+rename_sub(vec, "([aeiou])", ".\\\\1.")
 }
