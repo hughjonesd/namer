@@ -29,11 +29,12 @@ my_object %>% named_in(c("One", "Two"))
 
 
 # Base R:
-names(my_object) <- toupper(names(my_object))
+names(my_object)[names(my_object) %in% c("Two", "Three")] <-
+      tolower(names(my_object)[names(my_object) %in% c("Two", "Three")])
 
 # Nicer:
-my_object %>% rename_toupper()
-#>   ONE   TWO THREE  FOUR 
+my_object %>% rename_in(c("Two", "Three"), tolower)
+#>   One   two three  Four 
 #>     1     2     3     4
 ```
 
@@ -48,6 +49,9 @@ vec %>% named("One")
 vec %>% named_in(c("Two", "Three"))
 #>   Two Three 
 #>     2     3
+vec %>% named_starting("T")
+#>   Two Three 
+#>     2     3
 vec %>% named_like("[A-Z].*e$")
 #>   One Three 
 #>     1     3
@@ -57,21 +61,26 @@ Functions that start with `rename` return the object with its names
 changed:
 
 ``` r
+vec %>% rename_starting("T", tolower)
+#>   One   two three  Four 
+#>     1     2     3     4
+
+vec %>% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
+#> One.1 Two.2 Three  Four 
+#>     1     2     3     4
+
 vec %>% rename_gsub("[aeiou]", "e")
 #>   One   Twe Three  Feer 
 #>     1     2     3     4
-vec %>% rename_toupper()
-#>   ONE   TWO THREE  FOUR 
+```
+
+Or you can use a one-sided formula, like in
+[purrr](https://purrr.tidyverse.org/):
+
+``` r
+vec %>% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
+#> One.1 Two.2 Three  Four 
 #>     1     2     3     4
-vec %>% rename_tolower()
-#>   one   two three  four 
-#>     1     2     3     4
-vec %>% rename_paste(".", 1:4)
-#>   One.1   Two.2 Three.3  Four.4 
-#>       1       2       3       4
-vec %>% rename_fn(~paste0("Number", .x))
-#>   NumberOne   NumberTwo NumberThree  NumberFour 
-#>           1           2           3           4
 ```
 
 ## Installation
