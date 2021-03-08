@@ -81,6 +81,16 @@ Or you can use a one-sided formula, like in
 #> One.1 Two.2 Three  Four 
 #>     1     2     3     4
 }\if{html}{\out{</div>}}
+
+Or you can just use a named character vector:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
+#>   one   two Three  Four 
+#>     1     2     3     4
+}\if{html}{\out{</div>}}
+
+Or an unnamed character vector:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), c("First", "Second"))
+#>  First Second  Three   Four 
+#>      1      2      3      4
+}\if{html}{\out{</div>}}
 \subsection{Installation}{
 
 You can install the development version from

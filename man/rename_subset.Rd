@@ -11,15 +11,26 @@ rename_subset(x, matches, f, ...)
 
 \item{matches}{A logical or numeric index.}
 
-\item{f}{A function or one-sided formula, interpreted by \code{\link[rlang:as_function]{rlang::as_function()}}.}
+\item{f}{A function, one-sided formula, or character vector.}
 
-\item{...}{Passed into \code{f}.}
+\item{...}{Passed into \code{f}. An error is thrown if \code{...} is non-empty when \code{f}
+is a character vector.}
 }
 \value{
 The renamed object.
 }
 \description{
 Rename names indexed by a subset
+}
+\details{
+\itemize{
+\item If \code{f} is a function it will be applied to the selected names. If it is
+a formula it will be converted to a function by \code{\link[rlang:as_function]{rlang::as_function()}}, then
+applied.
+\item If \code{f} is a named character vector like \code{c(new_name = "old_name", ...)} then
+\code{"old_name"} will become \code{"new_name"}, as in \code{dplyr::rename()}.
+\item If \code{f} is an unnamed character vector, these will be the new names in order.
+}
 }
 \examples{
 

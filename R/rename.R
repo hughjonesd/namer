@@ -1,12 +1,92 @@
 
 
+
 #' @name doc-common-rename
 #' @param x An object with names.
 #' @param pattern A regular expression string (see [regex]).
-#' @param f A function or one-sided formula, interpreted by [rlang::as_function()].
-#' @param ... Passed into `f`.
+#' @param f A function, one-sided formula, or character vector.
+#' @param ... Passed into `f`. An error is thrown if `...` is non-empty when `f`
+#'   is a character vector.
+#' @details
+#'
+#' * If `f` is a function it will be applied to the selected names. If it is
+#' a formula it will be converted to a function by [rlang::as_function()], then
+#' applied.
+#' * If `f` is a named character vector like `c(new_name = "old_name", ...)` then
+#' `"old_name"` will become `"new_name"`, as in `dplyr::rename()`.
+#' * If `f` is an unnamed character vector, these will be the new names in order.
+#'
 #' @return The renamed object.
 NULL
+
+
+#' Internal: Return functions for character vectors
+#'
+#' @param char Named or unnamed character vector.
+#'
+#' @return
+#' `named_renamer` returns a function which converts
+#' elements of `nms` matching `char` to the corresponding elements of
+#' `names(char)`.
+#'
+#' `unnamed_renamer` returns a function which returns `char[seq_along(nms)]`.
+#'
+#' @noRd
+#'
+#' @examples
+#'
+#' nr <- named_renamer(c(new1 = "old1", new2 = "old2"))
+#' nr(c("old1", "old2", "other"))
+#' unr <- unnamed_renamer(c("a", "b", "c"))
+#' unr(c("d", "e", "f"))
+named_renamer <- function (char) {
+  force(char) # necessary or char will get overwritten as the function
+  function (nms) {
+    matches <- match(nms, char)
+    nms[! is.na(matches)] <- names(char)[matches[! is.na(matches)]]
+    nms
+  }
+}
+
+
+#' @rdname named_renamer
+#' @noRd
+unnamed_renamer <- function (char) {
+  force(char) # necessary or char will get overwritten as the function
+  function (nms) {
+    char[seq_along(nms)]
+  }
+}
+
+
+#' Internal: convert `f` argument to a function.
+#'
+#' @inherit doc-common-rename
+#'
+#' @return A function which takes names and replaces them.
+#' @noRd
+#'
+#' @examples
+#'
+#' rumpel:::f_to_function(paste)
+#' rumpel:::f_to_function(~paste(.x, 1))
+#' rumpel:::f_to_function(c("name1", "name2"))
+#' rumpel:::f_to_function(c(new1 = "old1", new2 = "old2"))
+#'
+f_to_function <- function (f, ...) {
+  if (is.character(f)) {
+    stopifnot(...length() == 0)
+    if (is.null(names(f))) {
+      f <- unnamed_renamer(f)
+    } else {
+      f <- named_renamer(f)
+    }
+  } else {
+    f <- rlang::as_function(f)
+  }
+
+  f
+}
 
 
 #' Rename names indexed by a subset
@@ -22,7 +102,7 @@ NULL
 #' rename_subset(vec, 2:3, paste0, 2:3)
 #'
 rename_subset <- function (x, matches, f, ...) {
-  f <- rlang::as_function(f)
+  f <- f_to_function(f, ...)
   names(x)[matches] <- f(names(x)[matches], ...)
   x
 }

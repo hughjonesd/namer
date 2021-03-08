@@ -75,6 +75,22 @@ vec %>% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
 #>     1     2     3     4
 ```
 
+Or you can just use a named character vector:
+
+``` r
+vec %>% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
+#>   one   two Three  Four 
+#>     1     2     3     4
+```
+
+Or an unnamed character vector:
+
+``` r
+vec %>% rename_in(c("One", "Two"), c("First", "Second"))
+#>  First Second  Three   Four 
+#>      1      2      3      4
+```
+
 ## Installation
 
 You can install the development version from

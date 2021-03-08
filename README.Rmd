@@ -72,6 +72,17 @@ Or you can use a one-sided formula, like in [purrr](https://purrr.tidyverse.org/
 vec %>% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
 ```
 
+Or you can just use a named character vector:
+
+```{r}
+vec %>% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
+```
+
+Or an unnamed character vector:
+
+```{r}
+vec %>% rename_in(c("One", "Two"), c("First", "Second"))
+```
 
 
 ## Installation
