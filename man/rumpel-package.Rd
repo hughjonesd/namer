@@ -65,24 +65,7 @@ vec \%>\% named_like("[A-Z].*e$")
 }\if{html}{\out{</div>}}
 
 Functions that start with \code{rename} return the object with its names
-changed:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_starting("T", tolower)
-#>   One   two three  Four 
-#>     1     2     3     4
-vec \%>\% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
-#> One.1 Two.2 Three  Four 
-#>     1     2     3     4
-vec \%>\% rename_gsub("[aeiou]", "e")
-#>   One   Twe Three  Feer 
-#>     1     2     3     4
-}\if{html}{\out{</div>}}
-
-Or you can use a one-sided formula, like in
-\href{https://purrr.tidyverse.org/}{purrr}:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
-#> One.1 Two.2 Three  Four 
-#>     1     2     3     4
-}\if{html}{\out{</div>}}
-
-Or you can just use a named character vector:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
+changed. You can use a named character vector:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
 #>   one   two Three  Four 
 #>     1     2     3     4
 }\if{html}{\out{</div>}}
@@ -90,6 +73,25 @@ Or you can just use a named character vector:\if{html}{\out{<div class="r">}}\pr
 Or an unnamed character vector:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), c("First", "Second"))
 #>  First Second  Three   Four 
 #>      1      2      3      4
+}\if{html}{\out{</div>}}
+
+Or a function:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_starting("T", tolower)
+#>   One   two three  Four 
+#>     1     2     3     4
+vec \%>\% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
+#> One.1 Two.2 Three  Four 
+#>     1     2     3     4
+}\if{html}{\out{</div>}}
+
+Or you can use a one-sided formula, as in
+\href{https://purrr.tidyverse.org/}{purrr}:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
+#> One.1 Two.2 Three  Four 
+#>     1     2     3     4
+}\if{html}{\out{</div>}}
+
+Or use a regular expression with \code{rename_gsub}:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_gsub("[aeiou]", "e")
+#>   One   Twe Three  Feer 
+#>     1     2     3     4
 }\if{html}{\out{</div>}}
 \subsection{Installation}{
 
