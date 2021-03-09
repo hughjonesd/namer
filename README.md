@@ -52,30 +52,7 @@ vec %>% named_like("[A-Z].*e$")
 ```
 
 Functions that start with `rename` return the object with its names
-changed:
-
-``` r
-vec %>% rename_starting("T", tolower)
-#>   One   two three  Four 
-#>     1     2     3     4
-vec %>% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
-#> One.1 Two.2 Three  Four 
-#>     1     2     3     4
-vec %>% rename_gsub("[aeiou]", "e")
-#>   One   Twe Three  Feer 
-#>     1     2     3     4
-```
-
-Or you can use a one-sided formula, like in
-[purrr](https://purrr.tidyverse.org/):
-
-``` r
-vec %>% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
-#> One.1 Two.2 Three  Four 
-#>     1     2     3     4
-```
-
-Or you can just use a named character vector:
+changed. You can use a named character vector:
 
 ``` r
 vec %>% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
@@ -89,6 +66,34 @@ Or an unnamed character vector:
 vec %>% rename_in(c("One", "Two"), c("First", "Second"))
 #>  First Second  Three   Four 
 #>      1      2      3      4
+```
+
+Or a function:
+
+``` r
+vec %>% rename_starting("T", tolower)
+#>   One   two three  Four 
+#>     1     2     3     4
+vec %>% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
+#> One.1 Two.2 Three  Four 
+#>     1     2     3     4
+```
+
+Or you can use a one-sided formula, as in
+[purrr](https://purrr.tidyverse.org/):
+
+``` r
+vec %>% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
+#> One.1 Two.2 Three  Four 
+#>     1     2     3     4
+```
+
+Or use a regular expression with `rename_gsub`:
+
+``` r
+vec %>% rename_gsub("[aeiou]", "e")
+#>   One   Twe Three  Feer 
+#>     1     2     3     4
 ```
 
 ## Installation
