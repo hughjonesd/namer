@@ -116,10 +116,10 @@ rename_where <- function (x, matches, f, ...) {
 }
 
 
-#' Rename names `%in%` a set
+#' Rename names in a set
 #'
 #' @inherit doc-common-rename
-#' @param table A character vector passed to `%in%`.
+#' @param y A character vector passed to `%in%`.
 #'
 #' @export
 #'
@@ -128,8 +128,8 @@ rename_where <- function (x, matches, f, ...) {
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
 #' rename_in(vec, c("Two", "Three"), paste0, "x")
 #'
-rename_in <- function (x, table, f, ...) {
-  matches <- names(x) %in% table
+rename_in <- function (x, y, f, ...) {
+  matches <- names(x) %in% y
   rename_where(x, matches, f, ...)
 }
 

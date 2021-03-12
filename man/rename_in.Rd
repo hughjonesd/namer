@@ -2,14 +2,14 @@
 % Please edit documentation in R/rename.R
 \name{rename_in}
 \alias{rename_in}
-\title{Rename names \code{\%in\%} a set}
+\title{Rename names in a set}
 \usage{
-rename_in(x, table, f, ...)
+rename_in(x, y, f, ...)
 }
 \arguments{
 \item{x}{An object with names.}
 
-\item{table}{A character vector passed to \code{\%in\%}.}
+\item{y}{A character vector passed to \code{\%in\%}.}
 
 \item{f}{A function, one-sided formula, or character vector.}
 
@@ -20,7 +20,7 @@ is a character vector.}
 The renamed object.
 }
 \description{
-Rename names \code{\%in\%} a set
+Rename names in a set
 }
 \details{
 \itemize{
