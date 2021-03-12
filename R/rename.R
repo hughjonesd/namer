@@ -116,6 +116,22 @@ rename_where <- function (x, matches, f, ...) {
 }
 
 
+
+#' Rename all names
+#'
+#' @inherit doc-common-rename
+#'
+#' @export
+#'
+#' @examples
+#'
+#' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
+#' rename_all(vec, tolower)
+#'
+rename_all <- function (x, f, ...) {
+  rename_where(x, TRUE, f, ...)
+}
+
 #' Rename names in a set
 #'
 #' @inherit doc-common-rename

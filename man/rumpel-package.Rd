@@ -38,17 +38,17 @@ my_object[startsWith(names(my_object), "T")]
 #>   Two Three 
 #>     2     3
 
-# Nicer:
+# Clearer:
 my_object \%>\% named_starting("T")
 #>   Two Three 
 #>     2     3
 
 
 # Base R:
-names(my_object)[names(my_object) \%in\% c("Two", "Three")] <-
-      tolower(names(my_object)[names(my_object) \%in\% c("Two", "Three")])
+some_names <- names(my_object) \%in\% c("Two", "Three")
+names(my_object)[some_names] <- tolower(names(my_object)[some_names])
 
-# Nicer:
+# Clearer:
 my_object \%>\% rename_in(c("Two", "Three"), tolower)
 #>   One   two three  Four 
 #>     1     2     3     4
@@ -56,6 +56,9 @@ my_object \%>\% rename_in(c("Two", "Three"), tolower)
 
 Functions that start with \code{named} return a subset of the original
 object:\if{html}{\out{<div class="r">}}\preformatted{vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
+vec \%>\% named_in(c("Two", "Three", "Non-existent"))
+#>   Two Three 
+#>     2     3
 vec \%>\% named_starting("T")
 #>   Two Three 
 #>     2     3
@@ -75,7 +78,10 @@ Or an unnamed character vector:\if{html}{\out{<div class="r">}}\preformatted{vec
 #>      1      2      3      4
 }\if{html}{\out{</div>}}
 
-Or a function:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_starting("T", tolower)
+Or a function:\if{html}{\out{<div class="r">}}\preformatted{vec \%>\% rename_all(tolower)
+#>   one   two three  four 
+#>     1     2     3     4
+vec \%>\% rename_starting("T", tolower)
 #>   One   two three  Four 
 #>     1     2     3     4
 vec \%>\% rename_in(c("One", "Two"), paste, 1:2, sep = ".")

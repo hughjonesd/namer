@@ -74,6 +74,9 @@ vec %>% rename_in(c("One", "Two"), c("First", "Second"))
 Or a function:
 
 ``` r
+vec %>% rename_all(tolower)
+#>   one   two three  four 
+#>     1     2     3     4
 vec %>% rename_starting("T", tolower)
 #>   One   two three  Four 
 #>     1     2     3     4

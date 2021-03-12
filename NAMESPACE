@@ -3,6 +3,7 @@
 export(named_in)
 export(named_like)
 export(named_starting)
+export(rename_all)
 export(rename_gsub)
 export(rename_in)
 export(rename_like)
