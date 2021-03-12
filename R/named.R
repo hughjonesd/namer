@@ -12,6 +12,33 @@ NULL
 NULL
 
 
+#' Subset objects by name
+#'
+#' @inherit doc-common
+#' @param y A vector of names.
+#'
+#' @details
+#'
+#' `named_in(x, y)` is like `x[y]` except that:
+#'
+#' * unmatched elements of `y` do not return an element;
+#' * elements are returned in their original order within `x`.
+#'
+#' @return
+#' ```
+#' x[intersect(names(x), y)]
+#' ```
+#' @export
+#'
+#' @examples
+#'
+#' vec <- c(one = 1, two = 2, three = 3, four = 4)
+#' named_in(vec, c("two", "one", "three", "five"))
+named_in <- function (x, y) {
+  x[intersect(names(x),  y)]
+}
+
+
 #' Subset objects by name using a regular expression
 #'
 #' @inherit doc-common
