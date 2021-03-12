@@ -29,8 +29,8 @@ my_object %>% named_starting("T")
 
 
 # Base R:
-names(my_object)[names(my_object) %in% c("Two", "Three")] <-
-      tolower(names(my_object)[names(my_object) %in% c("Two", "Three")])
+some_names <- names(my_object) %in% c("Two", "Three")
+names(my_object)[some_names] <- tolower(names(my_object)[some_names])
 
 # Nicer:
 my_object %>% rename_in(c("Two", "Three"), tolower)
@@ -43,6 +43,9 @@ object:
 
 ``` r
 vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
+vec %>% named_in(c("Two", "Three", "Non-existent"))
+#>   Two Three 
+#>     2     3
 vec %>% named_starting("T")
 #>   Two Three 
 #>     2     3
