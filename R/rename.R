@@ -99,9 +99,9 @@ f_to_function <- function (f, ...) {
 #' @examples
 #'
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' rename_subset(vec, 2:3, paste0, 2:3)
+#' rename_where(vec, 2:3, paste0, 2:3)
 #'
-rename_subset <- function (x, matches, f, ...) {
+rename_where <- function (x, matches, f, ...) {
   f <- f_to_function(f, ...)
   names(x)[matches] <- f(names(x)[matches], ...)
   x
@@ -122,7 +122,7 @@ rename_subset <- function (x, matches, f, ...) {
 #'
 rename_in <- function (x, table, f, ...) {
   matches <- names(x) %in% table
-  rename_subset(x, matches, f, ...)
+  rename_where(x, matches, f, ...)
 }
 
 
@@ -143,7 +143,7 @@ rename_like <- function (x, pattern, f, ..., ignore.case = FALSE, perl = FALSE,
   stopifnot(length(pattern) == 1)
   matches <- grepl(pattern, x, ignore.case = ignore.case, perl = perl,
                    fixed = fixed, useBytes = useBytes)
-  rename_subset(x, matches, f, ...)
+  rename_where(x, matches, f, ...)
 }
 
 
@@ -160,7 +160,7 @@ rename_like <- function (x, pattern, f, ..., ignore.case = FALSE, perl = FALSE,
 #' rename_starting(vec, "T", gsub, "[aeiou]", "e")
 rename_starting <- function (x, prefix, f, ...) {
   matches <- startsWith(names(x), prefix)
-  rename_subset(x, matches, f, ...)
+  rename_where(x, matches, f, ...)
 }
 
 
