@@ -25,7 +25,8 @@ Rename names that start with a prefix
 \details{
 \itemize{
 \item If \code{f} is a function it will be applied to the selected names. If it is
-a formula it will be converted to a function by \code{\link[rlang:as_function]{rlang::as_function()}}, then
+a formula and the 'rlang' package is installed, it will be converted to a
+function by \code{\link[rlang:as_function]{rlang::as_function()}}, then
 applied.
 \item If \code{f} is a named character vector like \code{c(new_name = "old_name", ...)} then
 \code{"old_name"} will become \code{"new_name"}, as in \code{dplyr::rename()}.

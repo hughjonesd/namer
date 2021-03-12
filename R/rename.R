@@ -10,7 +10,8 @@
 #' @details
 #'
 #' * If `f` is a function it will be applied to the selected names. If it is
-#' a formula it will be converted to a function by [rlang::as_function()], then
+#' a formula and the 'rlang' package is installed, it will be converted to a
+#' function by [rlang::as_function()], then
 #' applied.
 #' * If `f` is a named character vector like `c(new_name = "old_name", ...)` then
 #' `"old_name"` will become `"new_name"`, as in `dplyr::rename()`.
@@ -82,8 +83,15 @@ f_to_function <- function (f, ...) {
       f <- named_renamer(f)
     }
   } else {
-    f <- rlang::as_function(f)
+    if (inherits(f, "formula")) {
+      if (! requireNamespace("rlang", quietly = TRUE)) stop(
+            "To use a formula, you need the 'rlang' package installed. Type:\n",
+            "install.packages(\"rlang\")")
+      f <- rlang::as_function(f)
+    }
   }
+
+  if (! is.function(f)) stop("`f` must be a function, formula or character vector.")
 
   f
 }
