@@ -17,15 +17,13 @@ NULL
 #'
 #' @details
 #'
-#' `named_in(x, y)` is like `x[y]` except that:
+#' `named_in(x, y)` is similar to `x[y]` except that:
 #'
 #' * unmatched elements of `y` do not return an element;
 #' * elements are returned in their original order within `x`.
 #'
 #' @return
-#' ```
-#' x[intersect(names(x), y)]
-#' ```
+#' Elements of `x` whose names are in `y`.
 #' @export
 #'
 #' @examples
@@ -33,7 +31,8 @@ NULL
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
 #' named_in(vec, c("two", "one", "three", "five"))
 named_in <- function (x, y) {
-  x[intersect(names(x),  y)]
+  matches <- y[match(names(x), y, 0)]
+  x[matches]
 }
 
 
