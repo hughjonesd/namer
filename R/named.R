@@ -23,7 +23,9 @@ NULL
 #' * elements are returned in their original order within `x`.
 #'
 #' @return
-#' Elements of `x` whose names are in `y`.
+#' ```
+#' x[names(x) %in% y]
+#' ```
 #' @export
 #'
 #' @examples
@@ -31,8 +33,7 @@ NULL
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
 #' named_in(vec, c("two", "one", "three", "five"))
 named_in <- function (x, y) {
-  matches <- y[match(names(x), y, 0)]
-  x[matches]
+  x[names(x) %in% y]
 }
 
 

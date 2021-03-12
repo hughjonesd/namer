@@ -12,7 +12,8 @@ named_in(x, y)
 \item{y}{A vector of names.}
 }
 \value{
-Elements of \code{x} whose names are in \code{y}.
+\preformatted{x[names(x) \%in\% y]
+}
 }
 \description{
 Subset objects by name
