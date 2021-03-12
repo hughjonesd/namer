@@ -4,8 +4,6 @@
 NULL
 
 
-#' Common documentation
-#'
 #' @param x An object with names.
 #' @param pattern A regular expression string (see [regex]).
 #' @name doc-common
