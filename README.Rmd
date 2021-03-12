@@ -33,7 +33,7 @@ my_object <- c(One = 1, Two = 2, Three = 3, Four = 4)
 # Base R:
 my_object[startsWith(names(my_object), "T")]
 
-# Nicer:
+# Clearer:
 my_object %>% named_starting("T")
 
 
@@ -41,7 +41,7 @@ my_object %>% named_starting("T")
 some_names <- names(my_object) %in% c("Two", "Three")
 names(my_object)[some_names] <- tolower(names(my_object)[some_names])
 
-# Nicer:
+# Clearer:
 my_object %>% rename_in(c("Two", "Three"), tolower)
 ```
 
