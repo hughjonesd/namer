@@ -19,7 +19,7 @@ NULL
 #'
 #' `named_in(x, y)` is similar to `x[y]` except that:
 #'
-#' * unmatched elements of `y` do not return an element;
+#' * unmatched elements of `y` do not return an `NA` element;
 #' * elements are returned in their original order within `x`.
 #'
 #' @return

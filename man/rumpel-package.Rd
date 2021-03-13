@@ -111,4 +111,3 @@ devtools::install_github("hughjonesd/rumpel")
 \strong{Maintainer}: David Hugh-Jones \email{davidhughjones@gmail.com}
 
 }
-\keyword{internal}

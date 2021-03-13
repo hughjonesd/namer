@@ -21,7 +21,7 @@ Subset objects by name
 \details{
 \code{named_in(x, y)} is similar to \code{x[y]} except that:
 \itemize{
-\item unmatched elements of \code{y} do not return an element;
+\item unmatched elements of \code{y} do not return an \code{NA} element;
 \item elements are returned in their original order within \code{x}.
 }
 }
