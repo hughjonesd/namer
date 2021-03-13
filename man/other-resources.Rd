@@ -22,6 +22,6 @@ transform names.
 \code{\link[rlang:names2]{rlang::names2()}} is like \code{\link[=names]{names()}} but returns a character vector of \code{""}
 rather than \code{NULL}.
 
-\link{https://principles.tidyverse.org/names-attribute.html} is a principled
+https://principles.tidyverse.org/names-attribute.html is a principled
 framework for thinking about names in R.
 }

@@ -9,25 +9,25 @@
 #' Other useful resources for manipulating names
 #'
 #'
-#' Obviously, [base::names()] gets an object's names and `base::names<-()`
-#'   sets them.
+#' Obviously, [base::names()] gets an object's names and `names<-`
+#' sets them.
 #'
 #' [stats::setNames()] directly returns the object after setting names.
 #'
 #' [base::make.names()] turns a character vector into syntactically valid
-#'   names.
+#' names.
 #'
 #' [base::make.unique()] makes elements of a character vector unique by appending
-#'   sequence numbers to duplicates.
+#' sequence numbers to duplicates.
 #'
 #' [rlang::set_names()] is like [setNames()] but also takes a function to
-#'   transform names.
+#' transform names.
 #'
 #' [rlang::names2()] is like [names()] but returns a character vector of `""`
-#'   rather than `NULL`.
+#' rather than `NULL`.
 #'
-#' [https://principles.tidyverse.org/names-attribute.html] is a principled
-#'   framework for thinking about names in R.
+#' https://principles.tidyverse.org/names-attribute.html is a principled
+#' framework for thinking about names in R.
 #'
 #' @name other-resources
 NULL
