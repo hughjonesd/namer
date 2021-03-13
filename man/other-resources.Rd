@@ -4,7 +4,7 @@
 \alias{other-resources}
 \title{Other useful resources for manipulating names}
 \description{
-Obviously, \code{\link[base:names]{base::names()}} gets an object's names and \verb{base::names<-()}
+Obviously, \code{\link[base:names]{base::names()}} gets an object's names and \verb{names<-}
 sets them.
 }
 \details{

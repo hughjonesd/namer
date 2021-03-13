@@ -2,18 +2,24 @@
 % Please edit documentation in R/named.R
 \name{named_like}
 \alias{named_like}
+\alias{named_not_like}
 \title{Subset objects by name using a regular expression}
 \usage{
-named_like(x, pattern)
+named_like(x, pattern, ...)
+
+named_not_like(x, pattern, ...)
 }
 \arguments{
 \item{x}{An object with names.}
 
 \item{pattern}{A regular expression string (see \link{regex}).}
+
+\item{...}{Passed in to \code{\link[=grepl]{grepl()}}.}
 }
 \value{
-\preformatted{x[grepl(pattern, names(x))]
-}
+For \code{named_like}: \code{x[grepl(pattern, names(x), ...)]}.
+
+For \code{named_not_like}: \code{x[! grepl(pattern, names(x), ...)]}.
 }
 \description{
 Subset objects by name using a regular expression
@@ -22,5 +28,6 @@ Subset objects by name using a regular expression
 
 vec <- c(one = 1, two = 2, three = 3, four = 4)
 named_like(vec, "^t")
+named_not_like(vec, "e$")
 
 }
