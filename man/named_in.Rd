@@ -2,12 +2,12 @@
 % Please edit documentation in R/named.R
 \name{named_in}
 \alias{named_in}
-\alias{named_not_in}
+\alias{not_named_in}
 \title{Subset objects by name}
 \usage{
 named_in(x, y)
 
-named_not_in(x, y)
+not_named_in(x, y)
 }
 \arguments{
 \item{x}{An object with names.}
@@ -17,7 +17,7 @@ named_not_in(x, y)
 \value{
 For \code{named_in}: \code{x[names(x) \%in\% y]}.
 
-For \code{named_not_in}: \code{x[! names(x) \%in\% y]}.
+For \code{not_named_in}: \code{x[! names(x) \%in\% y]}.
 }
 \description{
 Subset objects by name
@@ -36,5 +36,5 @@ an element of \code{y}.
 
 vec <- c(one = 1, two = 2, three = 3, four = 4)
 named_in(vec, c("two", "one", "three", "five"))
-named_not_in(vec, c("two", "three"))
+not_named_in(vec, c("two", "three"))
 }

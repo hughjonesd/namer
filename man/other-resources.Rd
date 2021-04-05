@@ -4,10 +4,12 @@
 \alias{other-resources}
 \title{Other useful resources for manipulating names}
 \description{
-Obviously, \code{\link[base:names]{base::names()}} gets an object's names and \verb{names<-}
-sets them.
+There are several existing functions for working with names in R.
 }
 \details{
+Obviously, \code{\link[base:names]{base::names()}} gets an object's names and \verb{names<-}
+sets them.
+
 \code{\link[stats:setNames]{stats::setNames()}} directly returns the object after setting names.
 
 \code{\link[base:make.names]{base::make.names()}} turns a character vector into syntactically valid
@@ -22,6 +24,6 @@ transform names.
 \code{\link[rlang:names2]{rlang::names2()}} is like \code{\link[=names]{names()}} but returns a character vector of \code{""}
 rather than \code{NULL}.
 
-https://principles.tidyverse.org/names-attribute.html is a principled
+\url{https://principles.tidyverse.org/names-attribute.html} is a principled
 framework for thinking about names in R.
 }

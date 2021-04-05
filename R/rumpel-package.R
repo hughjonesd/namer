@@ -8,6 +8,7 @@
 
 #' Other useful resources for manipulating names
 #'
+#' There are several existing functions for working with names in R.
 #'
 #' Obviously, [base::names()] gets an object's names and `names<-`
 #' sets them.
@@ -26,7 +27,7 @@
 #' [rlang::names2()] is like [names()] but returns a character vector of `""`
 #' rather than `NULL`.
 #'
-#' https://principles.tidyverse.org/names-attribute.html is a principled
+#' <https://principles.tidyverse.org/names-attribute.html> is a principled
 #' framework for thinking about names in R.
 #'
 #' @name other-resources

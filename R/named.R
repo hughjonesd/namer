@@ -29,7 +29,7 @@ NULL
 #'
 #' For `named_in`: `x[names(x) %in% y]`.
 #'
-#' For `named_not_in`: `x[! names(x) %in% y]`.
+#' For `not_named_in`: `x[! names(x) %in% y]`.
 #'
 #' @export
 #'
@@ -37,7 +37,7 @@ NULL
 #'
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
 #' named_in(vec, c("two", "one", "three", "five"))
-#' named_not_in(vec, c("two", "three"))
+#' not_named_in(vec, c("two", "three"))
 named_in <- function (x, y) {
   x[names(x) %in% y]
 }
@@ -45,7 +45,7 @@ named_in <- function (x, y) {
 
 #' @export
 #' @rdname named_in
-named_not_in <- function (x, y) {
+not_named_in <- function (x, y) {
   x[! names(x) %in% y]
 }
 
@@ -59,7 +59,7 @@ named_not_in <- function (x, y) {
 #'
 #' For `named_like`: `x[grepl(pattern, names(x), ...)]`.
 #'
-#' For `named_not_like`: `x[! grepl(pattern, names(x), ...)]`.
+#' For `not_named_like`: `x[! grepl(pattern, names(x), ...)]`.
 #'
 #' @export
 #'
@@ -67,7 +67,7 @@ named_not_in <- function (x, y) {
 #'
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
 #' named_like(vec, "^t")
-#' named_not_like(vec, "e$")
+#' not_named_like(vec, "e$")
 #'
 named_like <- function (x, pattern, ...) {
   stopifnot(length(pattern) == 1)
@@ -77,7 +77,7 @@ named_like <- function (x, pattern, ...) {
 
 #' @rdname named_like
 #' @export
-named_not_like <- function (x, pattern, ...) {
+not_named_like <- function (x, pattern, ...) {
   stopifnot(length(pattern) == 1)
   x[! grepl(pattern, names(x), ...)]
 }
