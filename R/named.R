@@ -4,9 +4,9 @@
 NULL
 
 
+#' @name doc-common
 #' @param x An object with names.
 #' @param pattern A regular expression string (see [regex]).
-#' @name doc-common
 NULL
 
 
@@ -22,7 +22,7 @@ NULL
 #' * unmatched elements of `y` do not return an `NA` element;
 #' * elements are returned in their original order within `x`.
 #'
-#' `named_except(x, y)` returns elements of `x` whose name is not
+#' `not_named_in(x, y)` returns elements of `x` whose name is not
 #' an element of `y`.
 #'
 #' @return

@@ -18,23 +18,21 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/hughjonesd/rumpel/workflows/R-CMD-check/badge.svg)](https://github.com/hughjonesd/rumpel/actions)
 <!-- badges: end -->
 
-In the fairy tale, Rumpelstiltskin could be controlled once the heroine
-learned his name. 
 
-Rumpel is a tiny r package containing convenience functions for manipulating
+`{namer}` is a tiny r package containing convenience functions for manipulating
 objects by their names. Using these functions makes your code easier to read,
 and reduces duplication:
 
 ```{r}
-library(rumpel)
-library(magrittr)
+library(namer)
+
 my_object <- c(One = 1, Two = 2, Three = 3, Four = 4)
 
 # Base R:
 my_object[startsWith(names(my_object), "T")]
 
 # Clearer:
-my_object %>% named_starting("T")
+my_object |> named_starting("T")
 
 
 # Base R:
@@ -42,10 +40,16 @@ some_names <- names(my_object) %in% c("Two", "Three")
 names(my_object)[some_names] <- tolower(names(my_object)[some_names])
 
 # Clearer:
-my_object %>% rename_in(c("Two", "Three"), tolower)
+my_object |> rename_in(c("Two", "Three"), tolower)
+
+
+# Base R:
+my_object[sort(names(my_object))]
+
+# Clearer:
+my_object |> sort_by_name()
+
 ```
-
-
 
 Functions that start with `named` return a subset of the original
 object:
@@ -53,42 +57,48 @@ object:
 ```{r}
 
 vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
-vec %>% named_in(c("Two", "Three", "Non-existent"))
-vec %>% named_starting("T")
-vec %>% named_like("[A-Z].*e$")
+vec |> named_in(c("Two", "Three", "Non-existent"))
+vec |> named_starting("T")
+vec |> named_like("[A-Z].*e$")
+```
+
+`sort_by_name()` sorts object by name:
+
+```{r}
+
 ```
 
 Functions that start with `rename` return the object with its
 names changed. You can use a named character vector:
 
 ```{r}
-vec %>% rename_in(c("One", "Two"), c(one = "One", two = "Two"))
+vec |> rename_in(c("One", "Two"), c(one = "One", two = "Two"))
 ```
 
 Or an unnamed character vector:
 
 ```{r}
-vec %>% rename_in(c("One", "Two"), c("First", "Second"))
+vec |> rename_in(c("One", "Two"), c("First", "Second"))
 ```
 
 Or a function:
 
 ```{r}
-vec %>% rename_all(tolower)
-vec %>% rename_starting("T", tolower)
-vec %>% rename_in(c("One", "Two"), paste, 1:2, sep = ".")
+vec |> rename_all(tolower)
+vec |> rename_starting("T", tolower)
+vec |> rename_in(c("One", "Two"), paste, 1:2, sep = ".")
 ```
 
 Or you can use a one-sided formula, as in [purrr](https://purrr.tidyverse.org/):
 
 ```{r}
-vec %>% rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
+vec |> rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
 ```
 
 Or use a regular expression with `rename_gsub`:
 
 ```{r}
-vec %>% rename_gsub("[aeiou]", "e")
+vec |> rename_gsub("[aeiou]", "e")
 ```
 
 
