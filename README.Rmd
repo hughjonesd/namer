@@ -65,7 +65,7 @@ vec |> named_like("[A-Z].*e$")
 `sort_by_name()` sorts object by name:
 
 ```{r}
-
+sort_by_name(vec)
 ```
 
 Functions that start with `rename` return the object with its
@@ -86,7 +86,6 @@ Or a function:
 ```{r}
 vec |> rename_all(tolower)
 vec |> rename_starting("T", tolower)
-vec |> rename_in(c("One", "Two"), paste, 1:2, sep = ".")
 ```
 
 Or you can use a one-sided formula, as in [purrr](https://purrr.tidyverse.org/):
@@ -101,6 +100,15 @@ Or use a regular expression with `rename_gsub`:
 vec |> rename_gsub("[aeiou]", "e")
 ```
 
+Or match names in a table with `rename_match`:
+
+```{r}
+df <- data.frame(
+        old = c("One", "Two", "Three", "Four"),
+        new = c("A", "B", "C", "D")
+      )
+vec |> rename_match(df$old, df$new)
+```
 
 ## Installation
 
