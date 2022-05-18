@@ -13,7 +13,7 @@ sets them.
 \code{\link[stats:setNames]{stats::setNames()}} directly returns the object after setting names.
 
 \code{\link[base:make.names]{base::make.names()}} turns a character vector into syntactically valid
-names.
+names. \code{\link[vctrs:vec_as_names]{vctrs::vec_as_names()}} does the same thing, r-lib style.
 
 \code{\link[base:make.unique]{base::make.unique()}} makes elements of a character vector unique by appending
 sequence numbers to duplicates.

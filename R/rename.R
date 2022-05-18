@@ -215,3 +215,43 @@ rename_gsub <- function (x, pattern, replacement, ...) {
   x
 }
 
+
+#' Rename by matching existing names to a lookup table
+#'
+#' This is useful when you have a column of old names and a column of new names.
+#'
+#' Unmatched names are left unchanged.
+#'
+#' @inherit doc-common-rename
+#' @param table Character vector. Existing names will be found using
+#'   `match(names(x), table)`
+#' @param replacement Character vector. A vector of names, indexed by matches
+#'   in `table`.
+#' @param warn Logical. Warn if any names are unmatched?
+#'
+#' @return
+#'
+#' `x` renamed according to `names(x) <- replacement[match(names(x), table)]`.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' df <- data.frame(
+#'         old = c("One", "Two", "Three"),
+#'         new = c("New", "Newer", "Newest")
+#'       )
+#' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
+#' rename_match(vec, df$old, df$new)
+#'
+rename_match <- function (x, table, replacement, warn = FALSE) {
+  matches <- match(names(x), table)
+  new <- replacement[matches]
+  if (warn && any(is.na(matches))) {
+    warning("Unmatched names: ", paste(names(x)[is.na(matches)], sep = ", "))
+  }
+  new[is.na(matches)] <- names(x)[is.na(matches)]
+  names(x) <- new
+  x
+}
+

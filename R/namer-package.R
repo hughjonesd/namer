@@ -16,7 +16,7 @@
 #' [stats::setNames()] directly returns the object after setting names.
 #'
 #' [base::make.names()] turns a character vector into syntactically valid
-#' names.
+#' names. [vctrs::vec_as_names()] does the same thing, r-lib style.
 #'
 #' [base::make.unique()] makes elements of a character vector unique by appending
 #' sequence numbers to duplicates.

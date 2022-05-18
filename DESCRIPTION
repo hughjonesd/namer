@@ -18,4 +18,4 @@ RoxygenNote: 7.1.2
 Imports: 
     assertthat
 Suggests: 
-    rlang, dplyr
+    rlang, dplyr, vctrs
