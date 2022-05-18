@@ -4,12 +4,12 @@
 \alias{rename_where}
 \title{Rename names indexed by a subset}
 \usage{
-rename_where(x, matches, f, ...)
+rename_where(x, index, f, ...)
 }
 \arguments{
 \item{x}{An object with names.}
 
-\item{matches}{A logical or numeric index.}
+\item{index}{A logical or numeric index.}
 
 \item{f}{A function, one-sided formula, or character vector.}
 

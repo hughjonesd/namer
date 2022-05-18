@@ -100,7 +100,7 @@ f_to_function <- function (f, ...) {
 #' Rename names indexed by a subset
 #'
 #' @inherit doc-common-rename
-#' @param matches A logical or numeric index.
+#' @param index A logical or numeric index.
 #'
 #' @export
 #'
@@ -109,9 +109,9 @@ f_to_function <- function (f, ...) {
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
 #' rename_where(vec, 2:3, paste0, 2:3)
 #'
-rename_where <- function (x, matches, f, ...) {
+rename_where <- function (x, index, f, ...) {
   f <- f_to_function(f, ...)
-  names(x)[matches] <- f(names(x)[matches], ...)
+  names(x)[index] <- f(names(x)[index], ...)
   x
 }
 
