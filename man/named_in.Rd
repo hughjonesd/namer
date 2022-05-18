@@ -29,7 +29,7 @@ Subset objects by name
 \item elements are returned in their original order within \code{x}.
 }
 
-\code{named_except(x, y)} returns elements of \code{x} whose name is not
+\code{not_named_in(x, y)} returns elements of \code{x} whose name is not
 an element of \code{y}.
 }
 \examples{

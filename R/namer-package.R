@@ -25,7 +25,10 @@
 #' transform names.
 #'
 #' [rlang::names2()] is like [names()] but returns a character vector of `""`
-#' rather than `NULL`.
+#' rather than `NULL` if an object has no `names` attribute.
+#'
+#' [dplyr::rename()] and friends change the names of data frames or tibbles,
+#' but not other objects.
 #'
 #' <https://principles.tidyverse.org/names-attribute.html> is a principled
 #' framework for thinking about names in R.

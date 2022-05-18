@@ -1,4 +1,4 @@
-Package: rumpel
+Package: namer
 Title: Easily Rename and Subset Objects by Name
 Version: 0.0.0.9000
 Authors@R: 
@@ -14,8 +14,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: 
     assertthat
 Suggests: 
-    rlang
+    rlang, dplyr

@@ -69,10 +69,10 @@ unnamed_renamer <- function (char) {
 #'
 #' @examples
 #'
-#' rumpel:::f_to_function(paste)
-#' rumpel:::f_to_function(~paste(.x, 1))
-#' rumpel:::f_to_function(c("name1", "name2"))
-#' rumpel:::f_to_function(c(new1 = "old1", new2 = "old2"))
+#' namer:::f_to_function(paste)
+#' namer:::f_to_function(~paste(.x, 1))
+#' namer:::f_to_function(c("name1", "name2"))
+#' namer:::f_to_function(c(new1 = "old1", new2 = "old2"))
 #'
 f_to_function <- function (f, ...) {
   if (is.character(f)) {
