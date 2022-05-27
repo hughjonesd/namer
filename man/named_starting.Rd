@@ -12,8 +12,8 @@ named_starting(x, prefix)
 \item{prefix}{A character string}
 }
 \value{
-\preformatted{x[startsWith(names(x), prefix)]
-}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{x[startsWith(names(x), prefix)]
+}\if{html}{\out{</div>}}
 }
 \description{
 Subset objects by name using an initial substring

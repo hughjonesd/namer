@@ -24,44 +24,48 @@ Contains convenience functions for naming. Select subsets by name using matches 
 
 \code{{namer}} is a tiny r package containing convenience functions for
 manipulating objects by their names. Using these functions makes your
-code easier to read, and reduces duplication:\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(namer)
+code easier to read, and reduces duplication:
 
-my_object <- c(One = 1, Two = 2, Three = 3, Four = 4)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(namer)
+
+vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
 
 # Base R:
-my_object[startsWith(names(my_object), "T")]
+vec[startsWith(names(vec), "T")]
 #>   Two Three 
 #>     2     3
 
 # Clearer:
-my_object |> named_starting("T")
+vec |> named_starting("T")
 #>   Two Three 
 #>     2     3
 
 
 # Base R:
-some_names <- names(my_object) \%in\% c("Two", "Three")
-names(my_object)[some_names] <- tolower(names(my_object)[some_names])
+some_names <- names(vec) \%in\% c("Two", "Three")
+names(vec)[some_names] <- tolower(names(vec)[some_names])
 
 # Clearer:
-my_object |> rename_in(c("Two", "Three"), tolower)
+vec |> rename_in(c("Two", "Three"), tolower)
 #>   One   two three  Four 
 #>     1     2     3     4
 
 
 # Base R:
-my_object[sort(names(my_object))]
+vec[sort(names(vec))]
 #>  Four   One three   two 
 #>     4     1     3     2
 
 # Clearer:
-my_object |> sort_by_name()
+vec |> sort_by_name()
 #>  Four   One three   two 
 #>     4     1     3     2
 }\if{html}{\out{</div>}}
 
 Functions that start with \code{named} return a subset of the original
-object:\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
+object:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
 vec |> named_in(c("Two", "Three", "Non-existent"))
 #>   Two Three 
 #>     2     3
@@ -75,42 +79,67 @@ vec |> named_like("[A-Z].*e$")
 
 \code{sort_by_name()} sorts object by name:
 
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{sort_by_name(vec)
+#>  Four   One Three   Two 
+#>     4     1     3     2
+}\if{html}{\out{</div>}}
+
 Functions that start with \code{rename} return the object with its names
-changed. You can use a named character vector:\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_in(c("One", "Two"), c(one = "One", two = "Two"))
+changed. You can use a named character vector:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_in(c("One", "Two"), c(one = "One", two = "Two"))
 #>   one   two Three  Four 
 #>     1     2     3     4
 }\if{html}{\out{</div>}}
 
-Or an unnamed character vector:\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_in(c("One", "Two"), c("First", "Second"))
+Or an unnamed character vector:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_in(c("One", "Two"), c("First", "Second"))
 #>  First Second  Three   Four 
 #>      1      2      3      4
 }\if{html}{\out{</div>}}
 
-Or a function:\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_all(tolower)
+Or a function:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_all(tolower)
 #>   one   two three  four 
 #>     1     2     3     4
 vec |> rename_starting("T", tolower)
 #>   One   two three  Four 
 #>     1     2     3     4
-vec |> rename_in(c("One", "Two"), paste, 1:2, sep = ".")
-#> One.1 Two.2 Three  Four 
-#>     1     2     3     4
 }\if{html}{\out{</div>}}
 
 Or you can use a one-sided formula, as in
-\href{https://purrr.tidyverse.org/}{purrr}:\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
+\href{https://purrr.tidyverse.org/}{purrr}:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_in(c("One", "Two"), ~paste(.x, 1:2, sep = "."))
 #> One.1 Two.2 Three  Four 
 #>     1     2     3     4
 }\if{html}{\out{</div>}}
 
-Or use a regular expression with \code{rename_gsub}:\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_gsub("[aeiou]", "e")
+Or use a regular expression with \code{rename_gsub}:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec |> rename_gsub("[aeiou]", "e")
 #>   One   Twe Three  Feer 
 #>     1     2     3     4
+}\if{html}{\out{</div>}}
+
+Or match names in a table with \code{rename_match}:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{df <- data.frame(
+        old = c("One", "Two", "Three", "Four"),
+        new = c("A", "B", "C", "D")
+      )
+vec |> rename_match(df$old, df$new)
+#> A B C D 
+#> 1 2 3 4
 }\if{html}{\out{</div>}}
 \subsection{Installation}{
 
 You can install the development version from
-\href{https://github.com/}{GitHub} with:\if{html}{\out{<div class="sourceCode r">}}\preformatted{# install.packages("devtools")
+\href{https://github.com/}{GitHub} with:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{# install.packages("devtools")
 devtools::install_github("hughjonesd/namer")
 }\if{html}{\out{</div>}}
 }

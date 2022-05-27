@@ -85,8 +85,8 @@ f_to_function <- function (f, ...) {
   } else {
     if (inherits(f, "formula")) {
       if (! requireNamespace("rlang", quietly = TRUE)) stop(
-            "To use a formula, you need the 'rlang' package installed. Type:\n",
-            "install.packages(\"rlang\")")
+        "To use a formula, you need the 'rlang' package installed. Type:\n",
+        "install.packages(\"rlang\")")
       f <- rlang::as_function(f)
     }
   }
@@ -255,3 +255,42 @@ rename_match <- function (x, table, replacement, warn = FALSE) {
   x
 }
 
+
+#' Remove a prefix or suffix from names
+#'
+#' @inherit doc-common-rename
+#' @param prefix,suffix A length 1 character vector to remove.
+#'
+#' @return
+#'
+#' `x` with the prefix or suffix removed from `names(x)`.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' vec <- c("a.1" = 1, "aaa.1" = 2, "other" = 3, ".1" = 4)
+#' rename_remove_suffix(vec, ".1")
+#'
+#' vec <- c("x.a" = 1, "x.aaa" = 2, "other" = 3, "x." = 4)
+#' rename_remove_prefix(vec, "x.")
+rename_remove_prefix <- function (x, prefix) {
+  stopifnot(length(prefix) == 1)
+  matches <- startsWith(names(x), prefix)
+  new <- names(x)[matches]
+  new <- substr(new, nchar(prefix) + 1, nchar(new))
+  names(x)[matches] <- new
+  x
+}
+
+
+#' @export
+#' @rdname rename_remove_prefix
+rename_remove_suffix <- function (x, suffix) {
+  stopifnot(length(suffix) == 1)
+  matches <- endsWith(names(x), suffix)
+  new <- names(x)[matches]
+  new <- substr(new, 1, nchar(new) - nchar(suffix))
+  names(x)[matches] <- new
+  x
+}
