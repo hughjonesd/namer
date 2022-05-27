@@ -12,36 +12,36 @@ code easier to read, and reduces duplication:
 ``` r
 library(namer)
 
-my_object <- c(One = 1, Two = 2, Three = 3, Four = 4)
+vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
 
 # Base R:
-my_object[startsWith(names(my_object), "T")]
+vec[startsWith(names(vec), "T")]
 #>   Two Three 
 #>     2     3
 
 # Clearer:
-my_object |> named_starting("T")
+vec |> named_starting("T")
 #>   Two Three 
 #>     2     3
 
 
 # Base R:
-some_names <- names(my_object) %in% c("Two", "Three")
-names(my_object)[some_names] <- tolower(names(my_object)[some_names])
+some_names <- names(vec) %in% c("Two", "Three")
+names(vec)[some_names] <- tolower(names(vec)[some_names])
 
 # Clearer:
-my_object |> rename_in(c("Two", "Three"), tolower)
+vec |> rename_in(c("Two", "Three"), tolower)
 #>   One   two three  Four 
 #>     1     2     3     4
 
 
 # Base R:
-my_object[sort(names(my_object))]
+vec[sort(names(vec))]
 #>  Four   One three   two 
 #>     4     1     3     2
 
 # Clearer:
-my_object |> sort_by_name()
+vec |> sort_by_name()
 #>  Four   One three   two 
 #>     4     1     3     2
 ```
