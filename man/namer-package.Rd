@@ -17,7 +17,7 @@ Contains convenience functions for naming. Select subsets by name using matches 
 }}
 
 
-\href{https://github.com/hughjonesd/namer/actions}{\figure{https://github.com/hughjonesd/namer/workflows/R-CMD-check/badge.svg}}\if{html}{\out{
+\href{https://github.com/hughjonesd/namer/actions}{\if{html}{\figure{https://github.com/hughjonesd/namer/workflows/R-CMD-check/badge.svg}}}\if{html}{\out{
 <!-- badges: end -->
 }}
 
@@ -65,7 +65,8 @@ vec |> sort_by_name()
 Functions that start with \code{named} return a subset of the original
 object:
 
-\if{html}{\out{<div class="sourceCode r">}}\preformatted{vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{
+vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
 vec |> named_in(c("Two", "Three", "Non-existent"))
 #>   Two Three 
 #>     2     3

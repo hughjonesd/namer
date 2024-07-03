@@ -4,12 +4,12 @@
 \alias{rename_in}
 \title{Rename names in a set}
 \usage{
-rename_in(x, y, f, ...)
+rename_in(x, nm, f, ...)
 }
 \arguments{
 \item{x}{An object with names.}
 
-\item{y}{A character vector passed to \code{\%in\%}.}
+\item{nm}{A character vector passed to \code{\%in\%}.}
 
 \item{f}{A function, one-sided formula, or character vector.}
 
@@ -20,7 +20,7 @@ is a character vector.}
 The renamed object.
 }
 \description{
-Rename names in a set
+Elements of \code{x} whose names are in \code{nm} will be renamed.
 }
 \details{
 \itemize{
@@ -36,6 +36,6 @@ applied.
 \examples{
 
 vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-rename_in(vec, c("Two", "Three"), paste0, "x")
+vec |> rename_in(c("Two", "Three"), paste0, "x")
 
 }

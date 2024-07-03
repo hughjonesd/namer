@@ -134,8 +134,10 @@ rename_all <- function (x, f, ...) {
 
 #' Rename names in a set
 #'
+#' Elements of `x` whose names are in `nm` will be renamed.
+#'
 #' @inherit doc-common-rename
-#' @param y A character vector passed to `%in%`.
+#' @param nm A character vector passed to `%in%`.
 #'
 #' @export
 #'
@@ -144,8 +146,8 @@ rename_all <- function (x, f, ...) {
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
 #' vec |> rename_in(c("Two", "Three"), paste0, "x")
 #'
-rename_in <- function (x, y, f, ...) {
-  matches <- names(x) %in% y
+rename_in <- function (x, nm, f, ...) {
+  matches <- names(x) %in% nm
   rename_where(x, matches, f, ...)
 }
 
