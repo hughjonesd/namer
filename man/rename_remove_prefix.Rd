@@ -34,8 +34,8 @@ applied.
 \examples{
 
 vec <- c("a.1" = 1, "aaa.1" = 2, "other" = 3, ".1" = 4)
-rename_remove_suffix(vec, ".1")
+vec |> rename_remove_suffix(".1")
 
 vec <- c("x.a" = 1, "x.aaa" = 2, "other" = 3, "x." = 4)
-rename_remove_prefix(vec, "x.")
+vec |> rename_remove_prefix("x.")
 }

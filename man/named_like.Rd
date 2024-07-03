@@ -27,7 +27,7 @@ Subset objects by name using a regular expression
 \examples{
 
 vec <- c(one = 1, two = 2, three = 3, four = 4)
-named_like(vec, "^t")
-not_named_like(vec, "e$")
+vec |> named_like("^t")
+vec |> not_named_like("e$")
 
 }

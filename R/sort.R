@@ -2,12 +2,12 @@
 
 #' Sort an object by its names
 #'
-#' @param x An object with names.
+#' @inherit doc-common params
 #' @param decreasing Logical. Should sort order be increasing or decreasing?
 #'
 #' @return
 #'
-#' `x[sort(names(x), decreasing = decreasing]`
+#' `x[sort(names(x), decreasing = decreasing)]`
 #'
 #' @export
 #'

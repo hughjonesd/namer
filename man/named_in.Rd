@@ -35,6 +35,6 @@ an element of \code{y}.
 \examples{
 
 vec <- c(one = 1, two = 2, three = 3, four = 4)
-named_in(vec, c("two", "one", "three", "five"))
-not_named_in(vec, c("two", "three"))
+vec |> named_in(c("two", "one", "three", "five"))
+vec |> not_named_in(c("two", "three"))
 }

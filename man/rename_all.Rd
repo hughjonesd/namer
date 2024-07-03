@@ -34,6 +34,6 @@ applied.
 \examples{
 
 vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-rename_all(vec, tolower)
+vec |> rename_all(tolower)
 
 }

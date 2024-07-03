@@ -36,8 +36,8 @@ NULL
 #' @examples
 #'
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' named_in(vec, c("two", "one", "three", "five"))
-#' not_named_in(vec, c("two", "three"))
+#' vec |> named_in(c("two", "one", "three", "five"))
+#' vec |> not_named_in(c("two", "three"))
 named_in <- function (x, y) {
   x[names(x) %in% y]
 }
@@ -66,8 +66,8 @@ not_named_in <- function (x, y) {
 #' @examples
 #'
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' named_like(vec, "^t")
-#' not_named_like(vec, "e$")
+#' vec |> named_like("^t")
+#' vec |> not_named_like("e$")
 #'
 named_like <- function (x, pattern, ...) {
   stopifnot(length(pattern) == 1)
@@ -96,7 +96,7 @@ not_named_like <- function (x, pattern, ...) {
 #'
 #' @examples
 #' vec <- c(one = 1, two = 2, three = 3, four = 4)
-#' named_starting(vec, "t")
+#' vec |> named_starting("t")
 named_starting <- function (x, prefix) {
   stopifnot(length(prefix) == 1)
   x[startsWith(names(x), prefix)]

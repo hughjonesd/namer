@@ -126,7 +126,7 @@ rename_where <- function (x, index, f, ...) {
 #' @examples
 #'
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' rename_all(vec, tolower)
+#' vec |> rename_all(tolower)
 #'
 rename_all <- function (x, f, ...) {
   rename_where(x, TRUE, f, ...)
@@ -142,7 +142,7 @@ rename_all <- function (x, f, ...) {
 #' @examples
 #'
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' rename_in(vec, c("Two", "Three"), paste0, "x")
+#' vec |> rename_in(c("Two", "Three"), paste0, "x")
 #'
 rename_in <- function (x, y, f, ...) {
   matches <- names(x) %in% y
@@ -181,7 +181,7 @@ rename_like <- function (x, pattern, f, ..., ignore.case = FALSE, perl = FALSE,
 #' @examples
 #'
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' rename_starting(vec, "T", gsub, "[aeiou]", "e")
+#' vec |> rename_starting("T", \(x) gsub(x, "[aeiou]", "e"))
 rename_starting <- function (x, prefix, f, ...) {
   matches <- startsWith(names(x), prefix)
   rename_where(x, matches, f, ...)
@@ -201,12 +201,13 @@ rename_starting <- function (x, prefix, f, ...) {
 #' @examples
 #'
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' rename_gsub(vec, "[aeiou]", "e")
-#' rename_sub(vec, "([aeiou])", ".\\1.")
+#' vec |> rename_gsub("[aeiou]", "e")
+#' vec |> rename_sub("([aeiou])", "-\\1-")
 rename_sub <- function (x, pattern, replacement, ...) {
   names(x) <- sub(pattern, replacement, names(x), ...)
   x
 }
+
 
 #' @export
 #' @rdname rename_sub
@@ -242,10 +243,10 @@ rename_gsub <- function (x, pattern, replacement, ...) {
 #'         new = c("New", "Newer", "Newest")
 #'       )
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' rename_match(vec, df$old, df$new)
+#' vec |> rename_match(df$old, df$new)
 #'
 rename_match <- function (x, table, replacement, warn = FALSE) {
-  matches <- match(names(x), table)
+  matches <- match(names(x), table, nomatch = NA_character_)
   new <- replacement[matches]
   if (warn && any(is.na(matches))) {
     warning("Unmatched names: ", paste(names(x)[is.na(matches)], sep = ", "))
@@ -270,10 +271,10 @@ rename_match <- function (x, table, replacement, warn = FALSE) {
 #' @examples
 #'
 #' vec <- c("a.1" = 1, "aaa.1" = 2, "other" = 3, ".1" = 4)
-#' rename_remove_suffix(vec, ".1")
+#' vec |> rename_remove_suffix(".1")
 #'
 #' vec <- c("x.a" = 1, "x.aaa" = 2, "other" = 3, "x." = 4)
-#' rename_remove_prefix(vec, "x.")
+#' vec |> rename_remove_prefix("x.")
 rename_remove_prefix <- function (x, prefix) {
   stopifnot(length(prefix) == 1)
   matches <- startsWith(names(x), prefix)

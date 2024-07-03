@@ -36,5 +36,5 @@ applied.
 \examples{
 
 vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-rename_starting(vec, "T", gsub, "[aeiou]", "e")
+vec |> rename_starting("T", \(x) gsub(x, "[aeiou]", "e"))
 }

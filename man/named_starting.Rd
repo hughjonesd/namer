@@ -20,5 +20,5 @@ Subset objects by name using an initial substring
 }
 \examples{
 vec <- c(one = 1, two = 2, three = 3, four = 4)
-named_starting(vec, "t")
+vec |> named_starting("t")
 }

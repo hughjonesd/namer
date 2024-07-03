@@ -33,6 +33,6 @@ df <- data.frame(
         new = c("New", "Newer", "Newest")
       )
 vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-rename_match(vec, df$old, df$new)
+vec |> rename_match(df$old, df$new)
 
 }

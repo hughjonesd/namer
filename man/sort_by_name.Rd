@@ -12,7 +12,7 @@ sort_by_name(x, decreasing = FALSE)
 \item{decreasing}{Logical. Should sort order be increasing or decreasing?}
 }
 \value{
-\verb{x[sort(names(x), decreasing = decreasing]}
+\code{x[sort(names(x), decreasing = decreasing)]}
 }
 \description{
 Sort an object by its names
