@@ -50,6 +50,7 @@ Functions that start with `named` return a subset of the original
 object:
 
 ``` r
+
 vec <- c(One = 1, Two = 2, Three = 3, Four = 4)
 vec |> named_in(c("Two", "Three", "Non-existent"))
 #>   Two Three 
@@ -115,24 +116,30 @@ vec |> rename_gsub("[aeiou]", "e")
 #>     1     2     3     4
 ```
 
-Or match names in a table with `rename_match`:
+Or match names from old to new with `rename_lookup`:
 
 ``` r
 df <- data.frame(
         old = c("One", "Two", "Three", "Four"),
         new = c("A", "B", "C", "D")
       )
-vec |> rename_match(df$old, df$new)
+vec |> rename_lookup(df$old, df$new)
 #> A B C D 
 #> 1 2 3 4
 ```
 
 ## Installation
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+You can install from R-universe:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("hughjonesd/namer")
+install.packages("namer", repos = c("https://hughjonesd.r-universe.dev", 
+                 "https://cloud.r-project.org"))
+```
+
+Or install the development version from [GitHub](https://github.com/):
+
+``` r
+# install.packages("remotes")
+remotes::install_github("hughjonesd/namer")
 ```

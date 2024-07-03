@@ -125,23 +125,28 @@ Or use a regular expression with \code{rename_gsub}:
 #>     1     2     3     4
 }\if{html}{\out{</div>}}
 
-Or match names in a table with \code{rename_match}:
+Or match names from old to new with \code{rename_lookup}:
 
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{df <- data.frame(
         old = c("One", "Two", "Three", "Four"),
         new = c("A", "B", "C", "D")
       )
-vec |> rename_match(df$old, df$new)
+vec |> rename_lookup(df$old, df$new)
 #> A B C D 
 #> 1 2 3 4
 }\if{html}{\out{</div>}}
 \subsection{Installation}{
 
-You can install the development version from
-\href{https://github.com/}{GitHub} with:
+You can install from R-universe:
 
-\if{html}{\out{<div class="sourceCode r">}}\preformatted{# install.packages("devtools")
-devtools::install_github("hughjonesd/namer")
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{install.packages("namer", repos = c("https://hughjonesd.r-universe.dev", 
+                 "https://cloud.r-project.org"))
+}\if{html}{\out{</div>}}
+
+Or install the development version from \href{https://github.com/}{GitHub}:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{# install.packages("remotes")
+remotes::install_github("hughjonesd/namer")
 }\if{html}{\out{</div>}}
 }
 }
