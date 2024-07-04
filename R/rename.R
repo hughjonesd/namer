@@ -77,11 +77,11 @@ unnamed_renamer <- function (char) {
 f_to_function <- function (f, ...) {
   if (is.character(f)) {
     stopifnot(...length() == 0)
-    if (is.null(names(f))) {
-      f <- unnamed_renamer(f)
-    } else {
-      f <- named_renamer(f)
-    }
+    f <- if (is.null(names(f))) {
+           unnamed_renamer(f)
+         } else {
+           named_renamer(f)
+         }
   } else {
     if (inherits(f, "formula")) {
       if (! requireNamespace("rlang", quietly = TRUE)) stop(
@@ -91,7 +91,9 @@ f_to_function <- function (f, ...) {
     }
   }
 
-  if (! is.function(f)) stop("`f` must be a function, formula or character vector.")
+  if (! is.function(f)) {
+    stop("`f` must be a function, formula or character vector.")
+  }
 
   f
 }
@@ -183,7 +185,7 @@ rename_like <- function (x, pattern, f, ..., ignore.case = FALSE, perl = FALSE,
 #' @examples
 #'
 #' vec <- c("One" = 1, "Two" = 2, "Three" = 3, "Four" = 4)
-#' vec |> rename_starting("T", \(x) gsub(x, "[aeiou]", "e"))
+#' vec |> rename_starting("T", tolower)
 rename_starting <- function (x, prefix, f, ...) {
   matches <- startsWith(names(x), prefix)
   rename_where(x, matches, f, ...)
