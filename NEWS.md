@@ -1,3 +1,8 @@
+# namer (development version)
+
+* Added `named()`, a more explicit version of `x[y]`.
+
+
 # namer 0.1.0
 
 * Added a `NEWS.md` file to track changes to the package.

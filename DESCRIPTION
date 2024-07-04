@@ -1,6 +1,6 @@
 Package: namer
 Title: Easily Rename and Subset Objects by Name
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: 
     person(given = "David",
            family = "Hugh-Jones",
