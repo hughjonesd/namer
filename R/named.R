@@ -10,7 +10,38 @@ NULL
 NULL
 
 
+
 #' Subset objects by name
+#'
+#' `x |> named(y)` is the same as `x[y]`, but
+#'
+#' * it makes your intent clearer;
+#' * it throws an error if `y` is not a character vector;
+#' * unmatched elements of `y` return `NA`, but with the name of
+#'   the element, whereas `x[y]` would return an `NA` name.
+#'
+#' @inherit doc-common
+#' @param y A vector of names.
+#'
+#' @return
+#' `setNames(x[y], y)`.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' vec <- c(one = 1, two = 2, three = 3, four = 4)
+#' nms <- c("three", "two", "five")
+#' vec |> named(nms)
+#' # Compare to:
+#' vec[nms]
+named <- function (x, y) {
+  stopifnot(is.character(y))
+  setNames(x[y], y)
+}
+
+
+#' Subset objects by name, preserving order
 #'
 #' @inherit doc-common
 #' @param y A vector of names.

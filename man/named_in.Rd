@@ -3,7 +3,7 @@
 \name{named_in}
 \alias{named_in}
 \alias{not_named_in}
-\title{Subset objects by name}
+\title{Subset objects by name, preserving order}
 \usage{
 named_in(x, y)
 
@@ -20,7 +20,7 @@ For \code{named_in}: \code{x[names(x) \%in\% y]}.
 For \code{not_named_in}: \code{x[! names(x) \%in\% y]}.
 }
 \description{
-Subset objects by name
+Subset objects by name, preserving order
 }
 \details{
 \code{named_in(x, y)} is similar to \code{x[y]} except that:
