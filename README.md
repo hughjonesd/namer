@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/hughjonesd/namer/workflows/R-CMD-check/badge.svg)](https://github.com/hughjonesd/namer/actions)
+[![R-CMD-check](https://github.com/hughjonesd/namer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hughjonesd/namer/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `{namer}` is a tiny r package containing convenience functions for
