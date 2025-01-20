@@ -134,6 +134,7 @@ rename_all <- function (x, f, ...) {
   rename_where(x, TRUE, f, ...)
 }
 
+
 #' Rename names in a set
 #'
 #' Elements of `x` whose names are in `nm` will be renamed.
